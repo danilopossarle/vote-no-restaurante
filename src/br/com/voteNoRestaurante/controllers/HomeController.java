@@ -1,5 +1,7 @@
 package br.com.voteNoRestaurante.controllers;
 
+import static br.com.voteNoRestaurante.utils.HomeUtils.generateCombinations;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.voteNoRestaurante.model.dao.restaurante.RestauranteDAO;
+import br.com.voteNoRestaurante.utils.HomeUtils;
 
 /**
  * Controller inicial da aplicação
@@ -27,7 +30,7 @@ public class HomeController {
 	 */
 	@RequestMapping("/")
 	public ModelAndView index(Model model) {
-		model.addAttribute("restaurantes", this.restauranteDAO.findAll());
+		model.addAttribute("combinacoesVotos", generateCombinations(this.restauranteDAO.findAll()));
 		return new ModelAndView("index", model.asMap());
 	}
 }
