@@ -1,4 +1,4 @@
-package br.com.voteNoRestaurante.controladores;
+package br.com.voteNoRestaurante.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

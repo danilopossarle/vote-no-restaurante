@@ -1,4 +1,4 @@
-package br.com.voteNoRestaurante.controladores;
+package br.com.voteNoRestaurante.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;

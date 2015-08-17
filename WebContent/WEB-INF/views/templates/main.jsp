@@ -7,12 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<c:url value="/recursos/css/global.css"/>" />
+<link rel="stylesheet" href="<c:url value="/resources/css/global.css"/>" />
 <title><tiles:getAsString name="title"/></title>
 </head>
 <body>
-	<tiles:insertAttribute name="cabecalho"/>
-	<tiles:insertAttribute name="conteudo"/>
-	<tiles:insertAttribute name="rodape"/>
+	<div class="container">
+		<tiles:insertAttribute name="header"/>
+		<tiles:insertAttribute name="content"/>
+	</div>
+	<tiles:insertAttribute name="footer"/>
 </body>
 </html>

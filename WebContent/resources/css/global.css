@@ -1,0 +1,71 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.wrap {
+	margin: 0px auto;
+	width: 1100px;
+	height: 100%;
+}
+
+.wrap .subtext {
+	font-size: 12px;
+}
+
+.wrap .left {
+	float: left;
+}
+
+.wrap .right {
+	float: right;
+}
+
+html, body, .container {
+	height: 100%;
+}
+
+body > .container {
+	height: auto;
+	min-height: 100%;
+}
+
+
+.header {
+	background: #000033;
+	color: #FFFFFF;
+	height: 80px;
+	padding-top: 10px;
+}
+
+.header .wrap .left, .footer .wrap .left { 
+	padding-left: 10px;
+}
+.header .wrap .right {
+	padding-left: 30px;
+	padding-top: 16px;
+	width: 990px;
+}
+
+.container .content {
+	padding-bottom: 110px;
+	padding-top: 20px;
+}
+
+.footer {
+	clear: both;
+	position: relative;
+	height: 70px;
+	margin-top: -90px;
+	background: #000033;
+	color: #FFFFFF;
+	text-align: right;
+	padding-right: 30px;
+	padding-top: 20px;
+}
