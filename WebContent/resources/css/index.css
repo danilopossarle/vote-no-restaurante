@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+.container .content .votacao {
+	padding-left: 135px;
+}
+
+.container .content .votacao .produto {
+	border: 1px solid;
+    border-radius: 10px;
+    float: left;
+    height: 300px;
+    margin: 0 50px;
+    width: 300px;
+    text-align: center;
+    vertical-align: center;
+}
+
+.container .content .votacao .produto p {
+	margin: 10px 0;
+}
