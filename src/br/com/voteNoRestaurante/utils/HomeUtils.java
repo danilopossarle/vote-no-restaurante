@@ -1,7 +1,9 @@
 package br.com.voteNoRestaurante.utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import br.com.voteNoRestaurante.model.domain.Restaurante;
 
@@ -25,6 +27,7 @@ public class HomeUtils {
 		      combinations.add(new HomeModel(restaurantes.get(i), restaurantes.get(j)));
 		   }
 		}
+		Collections.shuffle(combinations, new Random());
 		return combinations;
 	}
 }

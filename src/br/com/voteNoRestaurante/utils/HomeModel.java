@@ -13,6 +13,10 @@ public class HomeModel {
 	
 	private Restaurante segundoRestaurante;
 
+	public HomeModel(){
+		
+	}
+	
 	/**
 	 * Construtor.
 	 * 

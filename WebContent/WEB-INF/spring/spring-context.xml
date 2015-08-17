@@ -21,16 +21,16 @@ http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="18000" />
 
 	<!-- Configurando banco de dados -->
-	<bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/voteNoProjeto" />
+	<bean id="postgresqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost:5432/voteNoRestaurante" />
 		<property name="username" value="root" />
-		<property name="password" value="@BDV0t3N0Pr0j3t0" />
+		<property name="password" value="@BDV0t3N0R35t@ur@nte" />
 	</bean>
 
 	<bean id="entityManagerFactory"	class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceXmlLocation" value="/META-INF/persistence.xml"></property>
-		<property name="dataSource" ref="mysqlDataSource" />
+		<property name="dataSource" ref="postgresqlDataSource" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>

@@ -29,14 +29,6 @@ public interface DAO<BO extends Persistable> {
 	BO findById(Serializable id);
 	
 	/**
-	 * Encontra o registro da base identificado por uma natural key
-	 * 
-	 * @param a natural key
-	 * @return o registro da base identificado por uma natural key
-	 */
-	BO findByNaturalKey(Serializable naturalKey);
-	
-	/**
 	 * Salva a entidade informada
 	 * 
 	 * @param entity entidade que deve ser salva

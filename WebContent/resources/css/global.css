@@ -1,3 +1,5 @@
+@CHARSET "UTF-8";
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -27,6 +29,10 @@ a {
 	float: right;
 }
 
+.wrap .votacao {
+	clear: both;
+}
+
 html, body, .container {
 	height: 100%;
 }
@@ -47,6 +53,7 @@ body > .container {
 .header .wrap .left, .footer .wrap .left { 
 	padding-left: 10px;
 }
+
 .header .wrap .right {
 	padding-left: 30px;
 	padding-top: 16px;

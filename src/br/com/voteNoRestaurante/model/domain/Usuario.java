@@ -1,5 +1,7 @@
 package br.com.voteNoRestaurante.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,12 +13,14 @@ import org.hibernate.validator.constraints.NotEmpty;
  * 
  * @author danilo.possarle
  */
+@Entity
+@Table(name="USUARIO") 
 public class Usuario extends Persistable {
 	
 	private String nome;
 	
 	private String email;
-
+	
 	/**
 	 * @return the nome
 	 */
