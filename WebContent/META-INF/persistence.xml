@@ -9,6 +9,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.voteNoRestaurante.model.domain.Restaurante</class>
 		<class>br.com.voteNoRestaurante.model.domain.Usuario</class>
+		<class>br.com.voteNoRestaurante.model.domain.Voto</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/voteNoRestaurante" />

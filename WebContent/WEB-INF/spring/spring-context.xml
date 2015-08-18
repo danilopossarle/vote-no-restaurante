@@ -17,8 +17,8 @@ http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 	<tx:annotation-driven />
 	<mvc:view-controller path="/" view-name="index" />
 
-	<!-- Mapeando recursos estáticos que ficarão cacheados por 5 minutos -->
-	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="18000" />
+	<!-- Mapeando recursos estáticos -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Configurando banco de dados -->
 	<bean id="postgresqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
