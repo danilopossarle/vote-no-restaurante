@@ -2,6 +2,7 @@ package br.com.voteNoRestaurante.model.dao.usuario;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.voteNoRestaurante.model.dao.DAO;
 import br.com.voteNoRestaurante.model.dao.GenericDAO;
 import br.com.voteNoRestaurante.model.domain.Usuario;
 
@@ -12,5 +13,11 @@ import br.com.voteNoRestaurante.model.domain.Usuario;
  */
 @Repository
 public class UsuarioDAO extends GenericDAO<Usuario> {
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public Class<Usuario> getPersistableClass() {
+		return Usuario.class;
+	}
 }

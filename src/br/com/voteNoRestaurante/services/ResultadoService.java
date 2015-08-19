@@ -1,11 +1,11 @@
-package br.com.voteNoRestaurante.utils.services;
+package br.com.voteNoRestaurante.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import br.com.voteNoRestaurante.model.dao.voto.VotoDAO;
+import br.com.voteNoRestaurante.model.dao.restaurante.RestauranteDAO;
 import br.com.voteNoRestaurante.model.domain.Usuario;
 import br.com.voteNoRestaurante.utils.Ranking;
 
@@ -18,7 +18,7 @@ import br.com.voteNoRestaurante.utils.Ranking;
 public class ResultadoService {
 
 	@Autowired
-	private VotoDAO votoDAO;
+	private RestauranteDAO restauranteDAO;
 
 	/**
 	 * Recupera o ranking geral dos restaurantes
@@ -26,7 +26,7 @@ public class ResultadoService {
 	 * @return {@link List} de {@link Ranking}
 	 */
 	public List<Ranking> getRankingGeral() {
-		return this.votoDAO.getRankingGeral();
+		return this.restauranteDAO.getRankingGeral();
 	}
 
 	/**
@@ -36,6 +36,6 @@ public class ResultadoService {
 	 * @return {@link List} de {@link Ranking}
 	 */
 	public List<Ranking> getRankingUsuario(Usuario usuario) {
-		return this.votoDAO.getRankingUsuario(usuario);
+		return this.restauranteDAO.getRankingUsuario(usuario);
 	}
 }

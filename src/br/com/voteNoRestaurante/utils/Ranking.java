@@ -11,7 +11,7 @@ public class Ranking {
 
 	public String abrevRestaurante;
 	
-	public Integer qtdeVotos;
+	public Long qtdeVotos;
 
 	/**
 	 * @return the nomeRestaurante
@@ -44,14 +44,14 @@ public class Ranking {
 	/**
 	 * @return the qtdeVotos
 	 */
-	public Integer getQtdeVotos() {
-		return qtdeVotos;
+	public Long getQtdeVotos() {
+		return qtdeVotos == null ? 0L : this.qtdeVotos;
 	}
 
 	/**
 	 * @param qtdeVotos the qtdeVotos to set
 	 */
-	public void setQtdeVotos(Integer qtdeVotos) {
+	public void setQtdeVotos(Long qtdeVotos) {
 		this.qtdeVotos = qtdeVotos;
 	}
 	

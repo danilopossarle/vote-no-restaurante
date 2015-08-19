@@ -6,17 +6,47 @@
 		<div id="accordion">
 			<h3>Ranking pessoal</h3>
 			<div>
-				<c:forEach items="${rankingUsuario}" var="ranking">
-					<img class="miniaturaRestaurante" src='<c:url value="/resources/imgs/restaurantes/miniaturas/${ranking.abrevRestaurante}.jpg"/>'/>
-					<p>Votos: ${ranking.qtdeVotos}</p>
-				</c:forEach>
+				<div id="highchartsRankingUsuario" class="highcharts"></div>
+				<table class="tableResults" id="dataUsuario">
+					<thead>
+						<tr>
+							<th></th>
+							<c:forEach items="${rankingUsuario}" var="ranking">
+								<th>${ranking.nomeRestaurante}</th>
+							</c:forEach>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<c:forEach items="${rankingUsuario}" var="ranking">
+								<td>${ranking.qtdeVotos}</td>
+							</c:forEach>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<h3>Ranking Geral</h3>
 			<div>
-				<c:forEach items="${rankingGeral}" var="ranking">
-					<img class="miniaturaRestaurante" src='<c:url value="/resources/imgs/restaurantes/miniaturas/${ranking.abrevRestaurante}.jpg"/>'/>
-					<p>Votos: ${ranking.qtdeVotos}</p>
-				</c:forEach>
+				<div id="highchartsRankingGeral" class="highcharts"></div>
+				<table class="tableResults" id="dataGeral">
+					<thead>
+						<tr>
+							<th></th>
+							<c:forEach items="${rankingGeral}" var="ranking">
+								<th>${ranking.nomeRestaurante}</th>
+							</c:forEach>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<c:forEach items="${rankingGeral}" var="ranking">
+								<td>${ranking.qtdeVotos}</td>
+							</c:forEach>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

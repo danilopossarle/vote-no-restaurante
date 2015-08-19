@@ -20,9 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.voteNoRestaurante.model.domain.Usuario;
 import br.com.voteNoRestaurante.model.domain.Voto;
+import br.com.voteNoRestaurante.services.ProcessamentoService;
+import br.com.voteNoRestaurante.services.ResultadoService;
 import br.com.voteNoRestaurante.utils.VotosModelWrapper;
-import br.com.voteNoRestaurante.utils.services.CadastroService;
-import br.com.voteNoRestaurante.utils.services.ResultadoService;
 
 /**
  * Controller para o cadastro do usuário e seus votos
@@ -31,10 +31,10 @@ import br.com.voteNoRestaurante.utils.services.ResultadoService;
  */
 @Controller
 @SessionAttributes("votos")
-public class CadastroController {
+public class ProcessamentoVotosController {
 
 	@Autowired
-	private CadastroService cadastroService;
+	private ProcessamentoService processamentoService;
 	
 	@Autowired
 	private ResultadoService resultadoService;
@@ -49,7 +49,7 @@ public class CadastroController {
 	 */
 	@RequestMapping(value = "/votos/processar", method = RequestMethod.POST)
 	public @ResponseBody int processVotos(@RequestBody VotosModelWrapper votosModelWraper) {
-		this.votos = this.cadastroService.processVotos(votosModelWraper);
+		this.votos = this.processamentoService.processVotos(votosModelWraper);
 		return this.votos.isEmpty() ? 0 : 1;
 	}
 
@@ -77,18 +77,18 @@ public class CadastroController {
 	 */
 	@Transactional
 	@RequestMapping(value = "/usuarios/executarCadastro", method = RequestMethod.POST)
-	public ModelAndView executarCadastro(@Valid Usuario usuario, BindingResult bindingResult, HttpSession sessao) {
+	public ModelAndView executarCadastro(@Valid Usuario usuario, BindingResult bindingResult) {
 		Model model = new ExtendedModelMap();
 
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("usuario", usuario);
 			return this.createPageCadastroUsuario(model);
-		} else {
-			this.cadastroService.save(usuario);
-			for (Voto voto : this.votos) {
-				voto.setUsuario(usuario);
-				this.cadastroService.save(voto);
-			}
+		}
+
+		this.processamentoService.save(usuario);
+		for (Voto voto : this.votos) {
+			voto.setUsuario(usuario);
+			this.processamentoService.save(voto);
 		}
 
 		model.addAttribute("rankingGeral", this.resultadoService.getRankingGeral());

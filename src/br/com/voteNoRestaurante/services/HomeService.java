@@ -1,4 +1,4 @@
-package br.com.voteNoRestaurante.utils.services;
+package br.com.voteNoRestaurante.services;
 
 import java.util.ArrayList;
 import java.util.Collections;

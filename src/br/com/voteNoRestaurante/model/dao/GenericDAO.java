@@ -1,13 +1,10 @@
 package br.com.voteNoRestaurante.model.dao;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -24,7 +21,7 @@ import br.com.voteNoRestaurante.model.domain.Persistable;
  * @author danilo.possarle
  * @param <BO> do tipo {@link Persistable}
  */
-public class GenericDAO<BO extends Persistable> implements DAO<BO> {
+public abstract class GenericDAO<BO extends Persistable> implements DAO<BO> {
 
 	@PersistenceContext
 	  private EntityManager entityManager;
@@ -70,13 +67,14 @@ public class GenericDAO<BO extends Persistable> implements DAO<BO> {
 	}
 	
 	/**
-	 * Recupera a classe do BO
+	 * Cria uma criteria.
 	 * 
-	 * @return a classe BO
+	 * @return {@link Criteria}
 	 */
-	@SuppressWarnings("unchecked")
-	private Class<BO> getPersistableClass() {
-		return (Class<BO>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	protected Criteria createCriteria() {
+		Session session = this.getEntityManager().unwrap(Session.class);
+		Criteria criteria = session.createCriteria(this.getPersistableClass());
+		return criteria;
 	}
 
 }

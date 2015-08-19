@@ -22,9 +22,7 @@ import javax.validation.constraints.NotNull;
 @Table(name="VOTO", uniqueConstraints=@UniqueConstraint(columnNames={"COD_RESTAURANTE", "COD_USUARIO"}))
 public class Voto extends Persistable {
 	
-	private Integer quantidadeVotos;
-	
-	private Long id;
+	private Long quantidadeVotos;
 	
 	private Restaurante restaurante;
 	
@@ -63,35 +61,19 @@ public class Voto extends Persistable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	/**
-	 * @return the id
-	 */
-	@Id
-	@Column(name = "COD_VOTO")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the quantidadeVotos
 	 */
 	@Column(name="QTDE")
-	public Integer getQuantidadeVotos() {
+	public Long getQuantidadeVotos() {
 		return quantidadeVotos;
 	}
 
 	/**
 	 * @param quantidadeVotos the quantidadeVotos to set
 	 */
-	public void setQuantidadeVotos(Integer quantidadeVotos) {
+	public void setQuantidadeVotos(Long quantidadeVotos) {
 		this.quantidadeVotos = quantidadeVotos;
 	}
 	

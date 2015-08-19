@@ -19,7 +19,10 @@ $(document).ready(function() {
 	cont++;
 	
 	$('.produto').click(function() {
+		//contabilizando o voto
 		addVoto($(this).find("img").attr("title"));
+		
+		// se não for a última combinação de restaurantes para voto, exibo a próxima
 		if (cont < opcoesVoto.size()) {
 			$(opcoesVoto[cont - 1]).fadeOut(250, function() {
 				$(opcoesVoto[cont]).fadeIn(250);

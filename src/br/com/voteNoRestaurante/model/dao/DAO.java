@@ -34,4 +34,11 @@ public interface DAO<BO extends Persistable> {
 	 * @param entity entidade que deve ser salva
 	 */
 	void save(BO entity);
+	
+	/**
+	 * Recupera a classe do BO
+	 * 
+	 * @return a classe BO
+	 */
+	Class<BO> getPersistableClass();
 }

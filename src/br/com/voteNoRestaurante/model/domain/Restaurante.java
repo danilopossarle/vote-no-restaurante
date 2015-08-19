@@ -4,10 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,26 +20,7 @@ public class Restaurante extends Persistable {
 	
 	private String abrev;
 	
-	private Long id;
-	
 	private List<Voto> votos;
-
-	/**
-	 * @return the id
-	 */
-	@Id
-	@Column(name = "COD_RESTAURANTE")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
 	
 	/**
 	 * @return the nome

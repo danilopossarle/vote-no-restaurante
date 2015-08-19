@@ -1,4 +1,4 @@
-package br.com.voteNoRestaurante.utils.services;
+package br.com.voteNoRestaurante.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +16,12 @@ import br.com.voteNoRestaurante.utils.VotoModel;
 import br.com.voteNoRestaurante.utils.VotosModelWrapper;
 
 /**
- * Serviço para ações do cadastro
+ * Serviço para processamento das ações do usuário (votação e cadastro)
  * 
  * @author danilo.possarle
  */
 @Repository
-public class CadastroService {
+public class ProcessamentoService {
 
 	@Autowired
 	private RestauranteDAO restauranteDAO;
@@ -44,7 +44,7 @@ public class CadastroService {
 		for (VotoModel votoModel : votosModelWraper.getVotosModel()) {
 			Voto voto = new Voto();
 			voto.setRestaurante(this.restauranteDAO.findByNome(votoModel.getRestaurante()));
-			voto.setQuantidadeVotos(votoModel.getQuantidade());
+			voto.setQuantidadeVotos(new Long(votoModel.getQuantidade()));
 			votos.add(voto);
 		}
 		return votos;
@@ -55,7 +55,6 @@ public class CadastroService {
 	 * 
 	 * @param usuario {@link Usuario}
 	 */
-//	@Transactional
 	public void save(Usuario usuario) {
 		this.usuarioDAO.save(usuario);
 	}
@@ -65,7 +64,6 @@ public class CadastroService {
 	 * 
 	 * @param voto {@link Voto}
 	 */
-//	@Transactional
 	public void save(Voto voto) {
 		this.votoDAO.save(voto);
 	}
