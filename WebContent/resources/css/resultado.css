@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+.content .wrap .highcharts {
+	height:400px;
+}
+
+.content .wrap .tableResults {
+	display: none;
+} 
