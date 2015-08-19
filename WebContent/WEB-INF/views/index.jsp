@@ -1,6 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="content">
 	<div class="wrap">
+		<div id="feedback"></div>
 		<h3>Bem vindo ao projeto Vote no Restaurante!</h3>
 		<p>Escolha abaixo o seu restaurante preferido.</p><br/>
 		<c:forEach items="${combinacoesVotos}" var="combinacao">

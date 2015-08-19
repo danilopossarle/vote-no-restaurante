@@ -1,4 +1,4 @@
-package br.com.voteNoRestaurante.utils;
+package br.com.voteNoRestaurante.utils.services;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.voteNoRestaurante.model.dao.restaurante.RestauranteDAO;
 import br.com.voteNoRestaurante.model.domain.Restaurante;
+import br.com.voteNoRestaurante.utils.HomeModel;
 
 /**
  * Classe utilitária para gerar as combinações de restaurantes a serem exibidos para votação
@@ -17,7 +18,7 @@ import br.com.voteNoRestaurante.model.domain.Restaurante;
  * @author danilo.possarle
  */
 @Repository
-public class HomeUtils {
+public class HomeService {
 	
 	@Autowired
 	private RestauranteDAO restauranteDAO;
@@ -40,6 +41,11 @@ public class HomeUtils {
 		return combinations;
 	}
 
+	/**
+	 * Recupera todos os restaurantes cadastrados
+	 * 
+	 * @return {@link List} de todos os {@link Restaurante}s
+	 */
 	public List<Restaurante> findAllRestaurantes() {
 		return this.restauranteDAO.findAll();
 	}

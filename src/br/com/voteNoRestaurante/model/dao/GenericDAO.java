@@ -14,7 +14,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.stereotype.Repository;
 
 import br.com.voteNoRestaurante.model.domain.Persistable;
 
@@ -24,7 +23,6 @@ import br.com.voteNoRestaurante.model.domain.Persistable;
  * @author danilo.possarle
  * @param <BO> do tipo {@link Persistable}
  */
-@Repository
 public class GenericDAO<BO extends Persistable> implements DAO<BO> {
 
 	private EntityManagerFactory emf;

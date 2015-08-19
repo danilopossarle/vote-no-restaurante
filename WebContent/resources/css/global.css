@@ -5,6 +5,14 @@
 	padding: 0px;
 }
 
+.error {
+	color: red;
+}
+
+.success {
+	color: green;
+}
+
 a {
 	font-weight: bold;
 	text-decoration: none;

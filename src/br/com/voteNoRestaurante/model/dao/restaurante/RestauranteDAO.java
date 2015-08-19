@@ -17,6 +17,12 @@ import br.com.voteNoRestaurante.model.domain.Restaurante;
 @Repository
 public class RestauranteDAO extends GenericDAO<Restaurante> {
 
+	/**
+	 * Retorna o restaurante com o nome informado
+	 * 
+	 * @param nome o nome do restaurante a ser recuperado
+	 * @return {@link Restaurante}
+	 */
 	public Restaurante findByNome(String nome) {
 		Session session = this.getEntityManager().unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Restaurante.class);

@@ -1,6 +1,5 @@
 package br.com.voteNoRestaurante.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.voteNoRestaurante.model.dao.restaurante.RestauranteDAO;
-import br.com.voteNoRestaurante.utils.HomeUtils;
+import br.com.voteNoRestaurante.utils.services.HomeService;
 
 /**
  * Controller inicial da aplicação
@@ -19,7 +18,7 @@ import br.com.voteNoRestaurante.utils.HomeUtils;
 public class HomeController {
 
 	@Autowired
-	private HomeUtils homeService;
+	private HomeService homeService;
 
 	/**
 	 * Realiza o preenchimento do model para a página inicial

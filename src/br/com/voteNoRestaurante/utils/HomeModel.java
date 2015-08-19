@@ -13,15 +13,11 @@ public class HomeModel {
 	
 	private Restaurante segundoRestaurante;
 
-	public HomeModel(){
-		
-	}
-	
 	/**
 	 * Construtor.
 	 * 
-	 * @param primeiroRestaurante
-	 * @param segundoRestaurante
+	 * @param primeiroRestaurante primeiro {@link Restaurante} da combinação para voto
+	 * @param segundoRestaurante segundo {@link Restaurante} da combinação para voto
 	 */
 	public HomeModel(Restaurante primeiroRestaurante, Restaurante segundoRestaurante) {
 		this.primeiroRestaurante = primeiroRestaurante;

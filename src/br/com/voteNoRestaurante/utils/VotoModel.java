@@ -1,6 +1,10 @@
 package br.com.voteNoRestaurante.utils;
 
-
+/**
+ * Model para deserializar os votos do usuário
+ * 
+ * @author danilo.possarle
+ */
 public class VotoModel {
 
 	private String restaurante;

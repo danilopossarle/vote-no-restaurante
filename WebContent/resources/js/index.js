@@ -23,8 +23,6 @@ $(document).ready(function() {
 		if (cont < opcoesVoto.size()) {
 			$(opcoesVoto[cont - 1]).fadeOut(250, function() {
 				$(opcoesVoto[cont]).fadeIn(250);
-				qtdeAntiga = $("#"+$(this).find("img").attr("title")).val();
-				$("#"+$(this).find("img").attr("title")).val(qtdeAntiga++);
 				cont++;
 			});
 		} else {
@@ -37,25 +35,25 @@ $(document).ready(function() {
 		    	}
 		    }
 		    
-		    $.redirect('/vote-no-restaurante/usuarios/cadastro', votos, 'POST');
-		    
-//		    $.ajax({
-//				type: 'POST',
-//				dataType: 'json',
-//				headers: { 
-//			        'Accept': 'application/json',
-//			        'Content-Type': 'application/json;charset=UTF-8' 
-//			    },
-//				url: "/vote-no-restaurante/usuarios/cadastro",
-//				data: JSON.stringify(data),
-//				success: function(response){
-//					console.log("Success");
-//					$(document).html(response);
-//				},
-//				error: function(response){
-//					alert("error");
-//				}
-//			});
+		    $.ajax({
+				type: 'POST',
+				dataType: 'json',
+				headers: { 
+			        'Accept': 'application/json',
+			        'Content-Type': 'application/json;charset=UTF-8' 
+			    },
+				url: "/vote-no-restaurante/votos/processar",
+				data: JSON.stringify(data),
+				success: function(response){
+					console.log("Success");
+					window.location.href = '/vote-no-restaurante/usuarios/cadastro';
+				},
+				error: function(response){
+					console.log("Error");
+					$("#feedback").addClass("error");
+					$("#feedback").html("<p>Houve um erro ao processar os votos. Clique <a href="/">aqui</a> para votar novamente.</p>");
+				}
+			});
 		}
 	});
 });

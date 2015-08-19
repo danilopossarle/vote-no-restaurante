@@ -15,7 +15,7 @@ public class VotoPK {
 	/**
 	 * @return the restaurante
 	 */
-	@JoinColumn(name="ID", nullable = false)
+	@JoinColumn(name="COD_RESTAURANTE", nullable = false)
 	@ManyToOne
 	public Restaurante getRestaurante() {
 		return restaurante;
@@ -31,7 +31,7 @@ public class VotoPK {
 	/**
 	 * @return the usuario
 	 */
-	@JoinColumn(name="ID", nullable = false)
+	@JoinColumn(name="COD_USUARIO", nullable = false)
 	@ManyToOne
 	public Usuario getUsuario() {
 		return usuario;

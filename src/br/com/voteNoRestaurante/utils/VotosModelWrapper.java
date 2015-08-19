@@ -2,7 +2,12 @@ package br.com.voteNoRestaurante.utils;
 
 import java.util.List;
 
-public class VotosModelWraper {
+/**
+ * Model para deserializar uma {@link List} de {@link VotoModel}
+ * 
+ * @author danilo.possarle
+ */
+public class VotosModelWrapper {
 	
 	private List<VotoModel> votosModel;
 
