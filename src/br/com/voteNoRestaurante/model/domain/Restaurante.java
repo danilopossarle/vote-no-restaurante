@@ -1,10 +1,14 @@
 package br.com.voteNoRestaurante.model.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +25,8 @@ public class Restaurante extends Persistable {
 	private String abrev;
 	
 	private Long id;
+	
+	private List<Voto> votos;
 
 	/**
 	 * @return the id
@@ -67,6 +73,21 @@ public class Restaurante extends Persistable {
 	 */
 	public void setAbrev(String abrev) {
 		this.abrev = abrev;
+	}
+	
+	/**
+	 * @return the votos
+	 */
+	@OneToMany(mappedBy="restaurante")
+	public List<Voto> getVotos() {
+		return votos;
+	}
+
+	/**
+	 * @param votos the votos to set
+	 */
+	public void setVotos(List<Voto> votos) {
+		this.votos = votos;
 	}
 	
 }

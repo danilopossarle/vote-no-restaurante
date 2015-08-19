@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import br.com.voteNoRestaurante.model.dao.DAO;
@@ -34,15 +36,21 @@ public class VotoDAO extends GenericDAO<Voto> {
 		Criteria criteria = session.createCriteria(Voto.class, "v");
 		// SELECT
 		ProjectionList projectionList = Projections.projectionList();
-		projectionList.add(Projections.property("v.quantidadeVotos"), "qtdeVotos");
+		projectionList.add(Projections.sum("v.quantidadeVotos"), "qtdeVotos");
 		projectionList.add(Projections.property("r.nome"), "nomeRestaurante");
-		projectionList.add(Projections.property("r.abrev"), "abrevRestaurante");		
+		projectionList.add(Projections.property("r.abrev"), "abrevRestaurante");
+		projectionList.add(Projections.groupProperty("r.nome"));
 		criteria.setProjection(projectionList);
 		
 		// JOINS
 		criteria.createCriteria("restaurante", "r");
 		
-		return criteria.list();
+		// ORDER BY
+		criteria.addOrder(Order.desc("v.quantidadeVotos"));
+		
+		criteria.setResultTransformer(Transformers.aliasToBean(Ranking.class));
+		
+		return (List<Ranking>) criteria.list();
 	}
 	
 	/**
@@ -57,9 +65,10 @@ public class VotoDAO extends GenericDAO<Voto> {
 		Criteria criteria = session.createCriteria(Voto.class, "v");
 		// SELECT
 		ProjectionList projectionList = Projections.projectionList();
-		projectionList.add(Projections.property("v.quantidadeVotos"), "qtdeVotos");
+		projectionList.add(Projections.sum("v.quantidadeVotos"), "qtdeVotos");
 		projectionList.add(Projections.property("r.nome"), "nomeRestaurante");
-		projectionList.add(Projections.property("r.abrev"), "abrevRestaurante");		
+		projectionList.add(Projections.property("r.abrev"), "abrevRestaurante");
+		projectionList.add(Projections.groupProperty("r.nome"));		
 		criteria.setProjection(projectionList);
 		
 		// JOINS
@@ -69,7 +78,9 @@ public class VotoDAO extends GenericDAO<Voto> {
 		// WHERE
 		criteriaUsuario.add(Restrictions.eq("u.id", usuario.getId()));
 		
-		return criteria.list();
+		criteria.setResultTransformer(Transformers.aliasToBean(Ranking.class));
+		
+		return (List<Ranking>) criteria.list();
 	}
 
 }

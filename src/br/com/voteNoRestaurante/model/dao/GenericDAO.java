@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -25,21 +26,14 @@ import br.com.voteNoRestaurante.model.domain.Persistable;
  */
 public class GenericDAO<BO extends Persistable> implements DAO<BO> {
 
-	private EntityManagerFactory emf;
-
-	/**
-	 * @param emf the emf to set 
-	 */
-	@PersistenceUnit
-	public void setEntityManagerFactory(EntityManagerFactory emf) {
-		this.emf = emf;
-	}
+	@PersistenceContext
+	  private EntityManager entityManager;
 
 	/**
 	 * @return the {@link EntityManager}
 	 */
 	protected EntityManager getEntityManager() {
-		return emf.createEntityManager();
+		return this.entityManager;
 	}
 
 	/**

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.voteNoRestaurante.model.dao.restaurante.RestauranteDAO;
 import br.com.voteNoRestaurante.model.dao.usuario.UsuarioDAO;
@@ -37,6 +38,7 @@ public class CadastroService {
 	 * @param votosModelWraper {@link VotosModelWrapper}
 	 * @return {@link List} de {@link Voto}s do usuário
 	 */
+	@Transactional
 	public List<Voto> processVotos(VotosModelWrapper votosModelWraper){
 		List<Voto> votos = new ArrayList<Voto>();
 		for (VotoModel votoModel : votosModelWraper.getVotosModel()) {
@@ -53,6 +55,7 @@ public class CadastroService {
 	 * 
 	 * @param usuario {@link Usuario}
 	 */
+//	@Transactional
 	public void save(Usuario usuario) {
 		this.usuarioDAO.save(usuario);
 	}
@@ -62,6 +65,7 @@ public class CadastroService {
 	 * 
 	 * @param voto {@link Voto}
 	 */
+//	@Transactional
 	public void save(Voto voto) {
 		this.votoDAO.save(voto);
 	}

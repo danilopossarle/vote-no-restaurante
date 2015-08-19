@@ -75,8 +75,8 @@ public class CadastroController {
 	 * @param sessao {@link HttpSession}
 	 * @return a página jsp para qual o usuário deverá ser redirecionado
 	 */
-	@RequestMapping(value = "/usuarios/executarCadastro", method = RequestMethod.POST)
 	@Transactional
+	@RequestMapping(value = "/usuarios/executarCadastro", method = RequestMethod.POST)
 	public ModelAndView executarCadastro(@Valid Usuario usuario, BindingResult bindingResult, HttpSession sessao) {
 		Model model = new ExtendedModelMap();
 
