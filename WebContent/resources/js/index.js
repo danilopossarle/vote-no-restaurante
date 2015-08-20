@@ -37,7 +37,9 @@ $(document).ready(function() {
 		    		data["votosModel"].push({"restaurante": key, "quantidade": votos[key].qtde.toString()});
 		    	}
 		    }
-		    
+		    $("#feedback").addClass("success");
+			$("#feedback").removeClass("error");
+			$("#feedback").html("<p>Processando os votos, por favor aguarde...</p>");
 		    $.ajax({
 				type: 'POST',
 				dataType: 'json',
@@ -54,7 +56,8 @@ $(document).ready(function() {
 				error: function(response){
 					console.log("Error");
 					$("#feedback").addClass("error");
-					$("#feedback").html("<p>Houve um erro ao processar os votos. Clique <a href="/">aqui</a> para votar novamente.</p>");
+					$("#feedback").removeClass("success");
+					$("#feedback").html("<p>Houve um erro ao processar os votos.</p>");
 				}
 			});
 		}
