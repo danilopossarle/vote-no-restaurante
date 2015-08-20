@@ -46,7 +46,7 @@ public class HomeService {
 	 * 
 	 * @return {@link List} de todos os {@link Restaurante}s
 	 */
-	public List<Restaurante> findAllRestaurantes() {
+	private List<Restaurante> findAllRestaurantes() {
 		return this.restauranteDAO.findAll();
 	}
 }

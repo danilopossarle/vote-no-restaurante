@@ -8,26 +8,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Arrays;
-
 import org.junit.Before;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.GsonFactoryBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.voteNoRestaurante.model.domain.Usuario;
-import br.com.voteNoRestaurante.services.ProcessamentoService;
+import br.com.voteNoRestaurante.services.ProcessamentoServiceTest;
 import br.com.voteNoRestaurante.services.ResultadoService;
 import br.com.voteNoRestaurante.utils.VotoModel;
 import br.com.voteNoRestaurante.utils.VotosModelWrapper;
@@ -42,7 +37,7 @@ import com.google.gson.Gson;
 public class ProcessamentoVotosControllerTest {
 
 	@Mock
-	private ProcessamentoService processamentoService;
+	private ProcessamentoServiceTest processamentoService;
 	
 	@Mock
 	private ResultadoService resultadoService;
@@ -74,6 +69,12 @@ public class ProcessamentoVotosControllerTest {
 	            .andReturn();
 	}
 
+	/**
+	 * Cria uma {@link VotoModel} para o restaurante informado com quantidade 1
+	 * 
+	 * @param restaurante nome do restaurante
+	 * @return {@link VotoModel}
+	 */
 	private VotoModel createVotoModel(String restaurante) {
 		VotoModel votoModel = new VotoModel();
 		votoModel.setQuantidade(1);
