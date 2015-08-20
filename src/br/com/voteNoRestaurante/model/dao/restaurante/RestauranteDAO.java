@@ -3,8 +3,8 @@ package br.com.voteNoRestaurante.model.dao.restaurante;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -71,27 +71,20 @@ public class RestauranteDAO extends GenericDAO<Restaurante> {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Ranking> getRankingUsuario(Usuario usuario) {
+		StringBuilder hqlBuilder = new StringBuilder();
+		hqlBuilder.append("select r.nome as nomeRestaurante, r.abrev as abrevRestaurante, ");
+		hqlBuilder.append("(select sum(v.quantidadeVotos) from Voto v inner join v.usuario u "); 
+		hqlBuilder.append("where r.id = v.restaurante.id and u.id = :idUsuario) as qtdeVotos ");
+		hqlBuilder.append("from Restaurante r");
+		
 		Session session = this.getEntityManager().unwrap(Session.class);
-		Criteria criteria = session.createCriteria(this.getPersistableClass(), "r");
+		Query query = session.createQuery(hqlBuilder.toString());
+		query.setLong("idUsuario", usuario.getId());
+		query.setResultTransformer(Transformers.aliasToBean(Ranking.class));
 		
-		// SELECT
-		ProjectionList projectionList = Projections.projectionList();
-		projectionList.add(Projections.sum("v.quantidadeVotos"), "qtdeVotos");
-		projectionList.add(Projections.groupProperty("r.nome"), "nomeRestaurante");
-		projectionList.add(Projections.groupProperty("r.abrev"), "abrevRestaurante");
-		criteria.setProjection(projectionList);
-		
-		// JOINS
-		Criteria criteriaVotos = criteria.createCriteria("votos", "v", JoinType.LEFT_OUTER_JOIN);
-		
-		// WHERE
-		criteriaVotos.add(Restrictions.eq("usuario", usuario));
-        
-		criteria.setResultTransformer(Transformers.aliasToBean(Ranking.class));
-		
-		return (List<Ranking>) criteria.list();
+		return (List<Ranking>) query.list();
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
