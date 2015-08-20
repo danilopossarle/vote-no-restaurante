@@ -45,11 +45,11 @@ $(document).ready(function() {
 			        'Accept': 'application/json',
 			        'Content-Type': 'application/json;charset=UTF-8' 
 			    },
-				url: "/vote-no-restaurante/votos/processar",
+				url: "./votos/processar",
 				data: JSON.stringify(data),
 				success: function(response){
 					console.log("Success");
-					window.location.href = '/vote-no-restaurante/usuarios/cadastro';
+					window.location.href = './usuarios/cadastro';
 				},
 				error: function(response){
 					console.log("Error");

@@ -11,7 +11,8 @@
             table: 'dataUsuario'
         },
         chart: {
-            type: 'column'
+            type: 'column',
+            width: 600
         },
         title: {
             text: 'Ranking Pessoal'
@@ -35,7 +36,8 @@
             table: 'dataGeral'
         },
         chart: {
-            type: 'column'
+            type: 'column',
+            width: 600
         },
         title: {
             text: 'Ranking Geral'
