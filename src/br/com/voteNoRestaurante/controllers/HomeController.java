@@ -2,6 +2,7 @@ package br.com.voteNoRestaurante.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,7 @@ public class HomeController {
 	 * @param model o model a ser preenchido
 	 * @return {@link ModelAndView} com a página a ser direcionada e o model preenchido
 	 */
+	@Transactional
 	@RequestMapping("/")
 	public ModelAndView index(Model model) {
 		model.addAttribute("combinacoesVotos", this.homeService.generateCombinations());

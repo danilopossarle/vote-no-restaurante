@@ -22,12 +22,13 @@ import org.springframework.ui.ExtendedModelMap;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.voteNoRestaurante.model.domain.Usuario;
-import br.com.voteNoRestaurante.services.ProcessamentoServiceTest;
+import br.com.voteNoRestaurante.services.ProcessamentoService;
 import br.com.voteNoRestaurante.services.ResultadoService;
 import br.com.voteNoRestaurante.utils.VotoModel;
 import br.com.voteNoRestaurante.utils.VotosModelWrapper;
 
 import com.google.gson.Gson;
+
 /**
  * Teste unitário para o controller {@link ProcessamentoVotosController}
  * 
@@ -37,7 +38,7 @@ import com.google.gson.Gson;
 public class ProcessamentoVotosControllerTest {
 
 	@Mock
-	private ProcessamentoServiceTest processamentoService;
+	private ProcessamentoService processamentoService;
 	
 	@Mock
 	private ResultadoService resultadoService;

@@ -3,16 +3,21 @@ package br.com.voteNoRestaurante.services;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
+import static org.springframework.util.Assert.notEmpty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.util.Assert;
 
 import br.com.voteNoRestaurante.model.dao.restaurante.RestauranteDAO;
+import br.com.voteNoRestaurante.model.domain.Restaurante;
 import br.com.voteNoRestaurante.utils.HomeModel;
 
 
@@ -29,6 +34,13 @@ public class HomeServiceTest extends AbstractServiceTest {
 
 	@InjectMocks
 	private HomeService homeService;
+	
+	@Test
+	public void testGenerateCombinationsBaseVazia() {
+		when(restauranteDAO.findAll()).thenReturn(new ArrayList<Restaurante>());
+		
+		notEmpty(this.homeService.generateCombinations(), "Não cadastrou nenhum restaurante ao iniciar com base vazia");
+	}
 	
 	@Test
 	public void testGenerateCombinations() {

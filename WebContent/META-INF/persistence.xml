@@ -10,16 +10,13 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		<class>br.com.voteNoRestaurante.model.domain.Restaurante</class>
 		<class>br.com.voteNoRestaurante.model.domain.Usuario</class>
 		<class>br.com.voteNoRestaurante.model.domain.Voto</class>
+		
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/voteNoRestaurante" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="@BDV0t3N0R35t@ur@nte" /> 
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			<property name="hibernate.connection.shutdown" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="false" />
-			<property name="hibernate.format_sql" value="false" />
-		</properties>
+          	<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+          	<property name="javax.persistence.jdbc.url"    value="jdbc:h2:mem:voteNoRestaurante" />
+          	<property name="javax.persistence.jdbc.user"   value="root" />
+          	<property name="javax.persistence.jdbc.password" value="@BDV0t3N0R35t@ur@nte" />
+          	<property name="hibernate.hbm2ddl.auto" value="update" />
+      	</properties>
 	</persistence-unit>
 </persistence>
