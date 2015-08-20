@@ -2,6 +2,8 @@
 
 .content .wrap .highcharts {
 	height:400px;
+	margin: 0 auto !important;
+	width: 600px;
 }
 
 .content .wrap .tableResults {
